@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -47,8 +47,8 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        -- H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
@@ -64,10 +64,50 @@ return {
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+        -- Imported from VSCode configuration by ChatGPT
+        -- ["j"] = { "gj", desc = "Move down visually" },
+        -- ["k"] = { "gk", desc = "Move up visually" },
+        ["J"] = { "5j", desc = "Move down 5 lines visually" },
+        ["K"] = { "5k", desc = "Move up 5 lines visually" },
+        ["H"] = { "^", desc = "Move to the start of the line" },
+        ["L"] = { "$", desc = "Move to the end of the line" },
+        ["U"] = { "<C-r>", desc = "Redo" },
+        -- [";"] = { "<leader><leader>/", desc = "Leader Leader Search" },
+        ["n"] = { "nzz", desc = "Find next with recenter" },
+        ["N"] = { "Nzz", desc = "Find previous with recenter" },
+        -- ["<Leader>q"] = { ":q<cr>", desc = "Quit" },
+        -- ["<Leader>w"] = { ":w<cr>", desc = "Save file" },
+        -- ["<Leader>s"] = { ":w<cr>", desc = "Save file" },
+        -- ["<Leader>S"] = { ":noautocmd w<cr>", desc = "Save file without formatting" },
+        -- ["<Leader>z"] = { ":TZAtarctica<cr>", desc = "Toggle Zen Mode" },
+        -- ["<Leader>/"] = { ":noh<cr>", desc = "Clear search highlights" },
+        ["<Leader>j"] = { "J", desc = "Join lines" },
+        -- ["<Leader>l"] = { "<C-w><C-w>", desc = "Switch windows" },
+        ["<Leader>v"] = { "<cmd>vsp<cr>", desc = "Split window vertically" },
+        ["<Leader>h"] = { "<cmd>sp<cr>", desc = "Split window horizontally" },
+        -- ["<Leader>k"] = { "<cmd>lua require('hover').hover()<cr>", desc = "Show hover" },
+        -- ["<Leader>f"] = { "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Quick fix" },
+        -- ["<Leader>c"] = { "<cmd>ToggleChat<cr>", desc = "Toggle chat sidebar" },
+        -- ["<Leader>x"] = { "<cmd>StartInlineChat<cr>", desc = "Start inline chat" },
+
+        -- Manually defined mapping
+        ["<Leader>tt"] = { [[<Cmd>exe v:count1 . "ToggleTerm direction=horizontal"<CR>]], desc = "ToggleTerm Open multiple horizontal terminals side-by-side" },
       },
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
+        ["<esc>"] = { [[<C-\><C-N>]], desc = "ToggleTerm Leave TERMINAL mode" },
+      },
+      v = {
+        -- Imported from VSCode configuration by ChatGPT
+        ["J"] = { "5j", desc = "Move down 5 lines" },
+        ["K"] = { "5k", desc = "Move up 5 lines" },
+        ["H"] = { "^", desc = "Move to start of line" },
+        ["L"] = { "$", desc = "Move to end of line" },
+        -- [";"] = { "<leader><leader>/", desc = "Leader Leader Search" },
+        -- ["<Leader>s"] = { ":w<cr>", desc = "Save file" },
+        -- ["<Leader>S"] = { ":noautocmd w<cr>", desc = "Save file without formatting" },
       },
     },
   },
